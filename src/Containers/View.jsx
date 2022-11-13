@@ -6,7 +6,20 @@ class View extends Component {
     }
     state = {  }
     render() { 
-        return ( <h1>View</h1> );
+        return (
+            <div>
+                <h1>View</h1>
+                <h1>View</h1>
+                <h1>View</h1>
+                <h1>View</h1>
+                <h1>View</h1>
+                <h1>View</h1>
+                <h1>View</h1>
+                <h1>View</h1>
+                <h1>View</h1>
+                <h1>View</h1>
+            </div>
+        );
     }
 }
  
