@@ -15,7 +15,7 @@ export class LoginForm extends Component {
           <Form.Control required type="password" placeholder="Enter Password" />
         </Form.Group>
 
-        <Button className="log-in" variant="primary" type="submit">
+        <Button className="log-in" variant="dark" type="submit">
           Log In
         </Button>
       </Form>
