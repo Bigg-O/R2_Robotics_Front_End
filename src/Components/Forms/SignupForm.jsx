@@ -39,7 +39,7 @@ export class SignupForm extends Component {
           </Form.Group>
         </Row>
 
-        <Button className="create-button" type="submit">
+        <Button className="create-button" type="submit" variant="dark">
           Create an Account!
         </Button>
       </Form>
