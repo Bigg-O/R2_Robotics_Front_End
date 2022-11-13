@@ -9,6 +9,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Login from "./Components/Forms/Login"
 import Signup from "./Components/Forms/Signup"
+import Home from "./Components/Forms/Home"
+import View from "./Containers/View"
+import PointCloud from "./Containers/PointCloud"
 
 class App extends Component {
   constructor(props) {
@@ -23,6 +26,9 @@ class App extends Component {
           <Route path="/signup" element={<Signup/>}/>
 
 
+          <Route path="/" element={<Home/>}/>
+          <Route path="/view" element={<View/>}/>
+          <Route path="/PointCloud" element={<PointCloud/>}/>
 
         </Routes>
       </Router>
