@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import "../css/Signup.css";
 import Logo from "../../Images/Logo.png";
 import { Container, Image } from "react-bootstrap";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import SignupForm from "./SignupForm";
 import axios from "axios";
 // import history from "../../history";
@@ -12,7 +12,7 @@ class Signup extends Component {
     render() { 
         return (
             <Container fluid className="signup-container">
-                <Image className="login-logo" src={Logo} fluid />
+                <Image className="logo" src={Logo} fluid />
 
                 <h1 className="signup-desc">Create an Account!</h1>
 
