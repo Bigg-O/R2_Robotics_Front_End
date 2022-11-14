@@ -5,7 +5,6 @@ import { Container, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import SignupForm from "./SignupForm";
 import axios from "axios";
-const HEROKU_URL = "https://r2-robotics-backend.herokuapp.com";
 
 class Signup extends Component {
     handleSubmission = e => {
@@ -14,13 +13,14 @@ class Signup extends Component {
 
         if (this.validatePW(value, e.target.formPassword2.value)) {
             axios
-                .post(HEROKU_URL + "/users/signup", {
+                .post(process.env.HEROKU_URI + "/users/signup", {
                     email: e.target.formEmail.value,
                     password: value
                 })
                 .then(response => {
                     console.log(response);
                     alert(response.data.message);
+                    // redirect to "/login"
                 })
                 .catch(err => {
                     console.log(err)

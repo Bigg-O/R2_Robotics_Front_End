@@ -5,6 +5,7 @@ import {
   Route
 } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import axios from "axios"
 
 import Login from "./Components/Forms/Login"
 import Signup from "./Components/Forms/Signup"
@@ -17,6 +18,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoading: false,
       files: [
         {
           id:"111ididididididid",
@@ -38,12 +40,39 @@ class App extends Component {
     }
   }
 
+  setCurrentEmail = email => {
+    for (const prop in email)
+      localStorage.setItem(prop, email[prop]);
+  }
+
+  handleLogin = e => {
+    e.preventDefault()
+    this.setState({ isLoading: true })
+    axios
+      .post(process.env.HEROKU_URI + "/users/login", {
+        email: e.target.formEmail.value,
+        password: e.target.formPassword.value
+      })
+      .then(response => {
+        this.setState({ isLoading: false })
+        console.log("successful Login: ", response);
+        localStorage.setItem("JWT", response.data.token);
+        this.setCurrentEmail(response.data.email);
+        // redirect to "/"
+      })
+      .catch(error => {
+        console.log("Error in Login: ", error);
+        if (error.response)
+          alert(error.response.data.message);
+      });
+  }
+
   render() {
     return (
       <Router>
         <NavBar/>
         <Routes>
-          <Route path="/login" element={<Login/>}/>
+          <Route path="/login" element={<Login onLogin={this.handleLogin} />}/>
           <Route path="/signup" element={<Signup/>}/>
 
           <Route exact path="/" element={<Home/>}/>

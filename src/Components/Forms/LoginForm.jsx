@@ -5,7 +5,7 @@ export class LoginForm extends Component {
   render() {
     return (
       <Form className="loginForm" onSubmit={this.props.onSubmit}>
-        <Form.Group controlId="formUsername">
+        <Form.Group controlId="formEmail">
           <Form.Label>Email</Form.Label>
           <Form.Control required type="email" placeholder="Enter Email" />
         </Form.Group>
