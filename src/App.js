@@ -4,7 +4,6 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Login from "./Components/Forms/Login"
@@ -39,8 +38,8 @@ class App extends Component {
     }
   }
 
-  render() { 
-    return ( 
+  render() {
+    return (
       <Router>
         <NavBar/>
         <Routes>
@@ -58,5 +57,5 @@ class App extends Component {
      );
   }
 }
- 
+
 export default App;

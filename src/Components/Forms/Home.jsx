@@ -9,10 +9,6 @@ import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Button from "react-bootstrap/Button"
 
 class Home extends Component {
-    constructor(props) {
-        super(props);
-    }
-    state = {  }
     render() { 
         return (
             <Container fluid className="home-container">

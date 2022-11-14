@@ -5,10 +5,68 @@ import { Container, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import SignupForm from "./SignupForm";
 import axios from "axios";
-// import history from "../../history";
-// const HEROKU_URL = "https://dareme-server.herokuapp.com/";
+const HEROKU_URL = "https://r2-robotics-backend.herokuapp.com";
 
 class Signup extends Component {
+    handleSubmission = e => {
+        e.preventDefault();
+        const { value } = e.target.formPassword
+
+        if (this.validatePW(value, e.target.formPassword2.value)) {
+            axios
+                .post(HEROKU_URL + "/users/signup", {
+                    email: e.target.formEmail.value,
+                    password: value
+                })
+                .then(response => {
+                    console.log(response);
+                    alert(response.data.message);
+                })
+                .catch(err => {
+                    console.log(err)
+                    if (err.response.status === 500) {
+                        alert("Invalid email format")
+                    } else {
+                        alert(err);
+                    }
+                });
+        } else {
+          alert("Password match or validation Failed");
+        }
+    };
+
+    validatePW (str, str2) {
+        const specialKeys = ["*","@","%","$"]
+        const numbers = ['0','1','2','3','4','5','6','7','8','9']
+
+        if (str.length < 8) {
+            return false
+        } else if (str === str.toLowerCase()) {
+            return false
+        } else if (str !== str2) {
+            return false
+        }
+
+        for (let i = 0; i < specialKeys.length; i++) {
+            if (str.includes(specialKeys[i])) {
+                break
+            }
+            if (i === specialKeys.length - 1) {
+                return false
+            }
+        }
+        for (let i = 0; i < numbers.length; i++) {
+            if (str.includes(numbers[i])) {
+                break
+            }
+            if (i === numbers.length - 1) {
+                return false
+            }
+        }
+  
+        return true
+    }
+
     render() { 
         return (
             <Container fluid className="signup-container">
