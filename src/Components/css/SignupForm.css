@@ -1,3 +1,7 @@
 .create-button.btn.btn-dark {
     margin-top: 2%;
   }
+
+.password-row.row {
+  margin-bottom: 2%;
+}

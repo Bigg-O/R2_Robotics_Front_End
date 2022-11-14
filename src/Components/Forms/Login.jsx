@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import Logo from "../../Images/Logo.png";
 import "../css/Login.css";
-import { Link, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import LoginForm from "./LoginForm";
 
 // React-Bootstrap
