@@ -22,7 +22,7 @@ class Login extends Component {
 
                 <Image className="login-logo" src={Logo} fluid />
 
-                <LoginForm onSubmit={this.props.onUserDataLoad}/>
+                <LoginForm onSubmit={this.props.onLogin}/>
 
                 <p className="sign-up">
                     Sign up for 1 month free trial!{" "}
