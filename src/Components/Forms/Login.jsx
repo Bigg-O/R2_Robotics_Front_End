@@ -9,15 +9,13 @@ import Image from "react-bootstrap/Image";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 
-const HEROKU_URI = "https://r2-robotics-backend.herokuapp.com"
-
 const Login = () => {
     const navigate = useNavigate()
 
     const handleLogin = e => {
         e.preventDefault()
         axios
-          .post(HEROKU_URI + "/users/login", {
+          .post(process.env.HEROKU_URI + "/users/login", {
             email: e.target.formEmail.value,
             password: e.target.formPassword.value
           })
