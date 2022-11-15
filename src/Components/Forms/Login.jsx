@@ -10,7 +10,7 @@ import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 
 // to be changed
-const HEROKU_URI = "http://localhost:3001"
+const HEROKU_URI = "https://r2-proj.netlify.app"
 
 const Login = () => {
     const navigate = useNavigate()

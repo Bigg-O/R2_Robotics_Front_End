@@ -7,7 +7,7 @@ import SignupForm from "./SignupForm";
 import axios from "axios";
 
 // to be changesd
-const HEROKU_URI = "http://localhost:3001"
+const HEROKU_URI = "https://r2-proj.netlify.app"
 
 const Signup = () => {
     const navigate = useNavigate()
