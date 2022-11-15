@@ -10,6 +10,10 @@ import Image from "react-bootstrap/Image"
 import Container from "react-bootstrap/Container"
 
 class NavBar extends Component {
+    handleLogout = () => {
+        localStorage.clear();
+    }
+
     render() { 
         return (
             <Navbar collapseOnSelect expand="md" variant="dark" fixed="top">
@@ -22,7 +26,7 @@ class NavBar extends Component {
                         <Nav className="me-auto"/>
                         <Nav>
                             <Nav.Link as={Link} to="/login" className="logout" onClick={this.handleLogout}>
-                                <Button variant="link">logout</Button>
+                                <Button variant="link">{localStorage.getItem("email")} logout</Button>
                             </Nav.Link>
 
                             <Nav.Link as={Link} to="/view">
