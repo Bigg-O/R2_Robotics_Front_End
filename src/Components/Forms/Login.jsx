@@ -9,7 +9,7 @@ import Image from "react-bootstrap/Image";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 
-const HEROKU_URI = "https://r2-proj.netlify.app"
+const HEROKU_URI = "https://r2-robotics-backend.herokuapp.com"
 
 const Login = () => {
     const navigate = useNavigate()

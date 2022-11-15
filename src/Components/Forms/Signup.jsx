@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import SignupForm from "./SignupForm";
 import axios from "axios";
 
-const HEROKU_URI = "https://r2-proj.netlify.app"
+const HEROKU_URI = "https://r2-robotics-backend.herokuapp.com"
 
 const Signup = () => {
     const navigate = useNavigate()
