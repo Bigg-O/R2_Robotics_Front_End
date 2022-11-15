@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import SignupForm from "./SignupForm";
 import axios from "axios";
 
-// to be changesd
 const HEROKU_URI = "https://r2-proj.netlify.app"
 
 const Signup = () => {

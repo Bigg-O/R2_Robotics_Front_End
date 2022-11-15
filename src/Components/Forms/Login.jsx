@@ -9,7 +9,6 @@ import Image from "react-bootstrap/Image";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 
-// to be changed
 const HEROKU_URI = "https://r2-proj.netlify.app"
 
 const Login = () => {
