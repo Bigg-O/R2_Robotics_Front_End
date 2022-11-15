@@ -6,8 +6,6 @@ import { Link } from "react-router-dom";
 import SignupForm from "./SignupForm";
 import axios from "axios";
 
-const HEROKU_URI = "https://r2-robotics-backend.herokuapp.com"
-
 const Signup = () => {
     const navigate = useNavigate()
     
@@ -17,7 +15,7 @@ const Signup = () => {
 
         if (validatePW(value, e.target.formPassword2.value)) {
             axios
-                .post(HEROKU_URI + "/users/signup", {
+                .post(process.env.HEROKU_URI + "/users/signup", {
                     email: e.target.formEmail.value,
                     password: value
                 })
