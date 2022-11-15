@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { useNavigate } from 'react-router-dom'
 import "../css/Signup.css";
 import Logo from "../../Images/Logo.png";
 import { Container, Image } from "react-bootstrap";
@@ -6,21 +6,25 @@ import { Link } from "react-router-dom";
 import SignupForm from "./SignupForm";
 import axios from "axios";
 
-class Signup extends Component {
-    handleSubmission = e => {
+const HEROKU_URI = "https://r2-robotics-backend.herokuapp.com"
+
+const Signup = () => {
+    const navigate = useNavigate()
+    
+    const handleSubmission = e => {
         e.preventDefault();
         const { value } = e.target.formPassword
 
-        if (this.validatePW(value, e.target.formPassword2.value)) {
+        if (validatePW(value, e.target.formPassword2.value)) {
             axios
-                .post(process.env.HEROKU_URI + "/users/signup", {
+                .post(HEROKU_URI + "/users/signup", {
                     email: e.target.formEmail.value,
                     password: value
                 })
                 .then(response => {
                     console.log(response);
-                    alert(response.data.message);
-                    // redirect to "/login"
+                    alert(response.data.message)
+                    navigate("/login")
                 })
                 .catch(err => {
                     console.log(err)
@@ -35,7 +39,7 @@ class Signup extends Component {
         }
     };
 
-    validatePW (str, str2) {
+    const validatePW = (str, str2) => {
         const specialKeys = ["*","@","%","$"]
         const numbers = ['0','1','2','3','4','5','6','7','8','9']
 
@@ -67,24 +71,22 @@ class Signup extends Component {
         return true
     }
 
-    render() { 
-        return (
-            <Container fluid className="signup-container">
-                <Image className="logo" src={Logo} fluid />
+    return (
+        <Container fluid className="signup-container">
+            <Image className="logo" src={Logo} fluid />
 
-                <h1 className="signup-desc">Create an Account!</h1>
+            <h1 className="signup-desc">Create an Account!</h1>
 
-                <SignupForm onSubmit={this.handleSubmission} />
+            <SignupForm onSubmit={handleSubmission} />
 
-                <p className="b2-login">
-                    NVM I already have an account, back to{" "}
-                    <Link className="login-link" to="/login">
-                    Log In
-                    </Link>
-                </p>
-            </Container>
-        );
-    }
+            <p className="b2-login">
+                NVM I already have an account, back to{" "}
+                <Link className="login-link" to="/login">
+                Log In
+                </Link>
+            </p>
+        </Container>
+    )
 }
  
 export default Signup;
