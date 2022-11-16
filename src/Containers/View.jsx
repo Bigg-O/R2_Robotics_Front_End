@@ -1,20 +1,42 @@
 import { Component } from "react"
 import "./css/View.css"
 import ViewCard from "../Components/ViewCard"
+import axios from "axios"
 
 import Container from "react-bootstrap/Container"
 import Table from "react-bootstrap/Table"
 
 class View extends Component {
-    render() { 
+    constructor(props) {
+        super(props)
+        this.state = {
+            files: []
+        }
+    }
 
+    componentDidMount() {
+        axios
+            .get(process.env.HEROKU_URI + `/files/${localStorage.getItem("user_id")}`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("JWT")}`
+                }
+            }).then(resp => {
+                console.log(resp)
+                this.setState({files : resp.data.files})
+            }).catch(err => {
+                console.log(err)
+            })
+    }
+
+    render() { 
+        console.log(this.state.files)
         return (
             <Container fluid className="view-container">
                 <Table striped bordered hover>
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Date</th>
+                            <th>Date Created</th>
                             <th>Product Name</th>
                             <th>Product Info</th>
                             <th>Reference #</th>
@@ -25,9 +47,9 @@ class View extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.props.files.map(file => (
+                        {this.state.files.map(file => (
                             <ViewCard
-                                key={file.id}
+                                key={file._id}
                                 file={file}
                             />
                         ))}

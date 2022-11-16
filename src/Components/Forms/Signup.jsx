@@ -17,7 +17,8 @@ const Signup = () => {
 
         if (validatePW(value, e.target.formPassword2.value)) {
             axios
-                .post(HEROKU_URI + "/users/signup", {
+                .post(HEROKU_URI + "/users/signup", {  
+                // .post("http://localhost:3001" + "/users/signup", {
                     email: e.target.formEmail.value,
                     password: value
                 })
