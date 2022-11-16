@@ -46,6 +46,11 @@ class View extends Component {
             })
     }
 
+    handleEdit = data => {
+        console.log(data.target.formProductName.value)
+        
+    }
+
     updateStateDelete = id => {
         let files = [...this.state.files]
         const fileIndex = files.map(file => file._id).indexOf(id)
@@ -60,8 +65,8 @@ class View extends Component {
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Date Created</th>
                             <th>Product Name</th>
+                            <th>Date Created</th>
                             <th>Product Info</th>
                             <th>Reference #</th>
                             <th>Country</th>
@@ -75,6 +80,7 @@ class View extends Component {
                             <ViewCard
                                 key={file._id}
                                 file={file}
+                                onEdit={this.handleEdit}
                                 onDelete={this.handleDelete}
                             />
                         ))}

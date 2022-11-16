@@ -15,9 +15,6 @@ class HomeForm extends Component {
                 <Row>
                     <h1 className="home-desc">Add an image or file!</h1>
                     <Col>
-                        <FloatingLabel controlId="formProductId" className="md-3" label="Product ID" >
-                            <Form.Control type="id" placeholder="."/>
-                        </FloatingLabel>
                         <FloatingLabel controlId="formProductName" className="md-3" label="Product Name" >
                             <Form.Control type="id" placeholder="."/>
                         </FloatingLabel>
