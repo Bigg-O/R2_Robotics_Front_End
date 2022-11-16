@@ -14,16 +14,18 @@ class View extends Component {
         this.state = {
             files: []
         }
+        this.headers = {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("JWT")}`
+            }
+        }
     }
 
     componentDidMount() {
         axios
-            .get(HEROKU_URI + `/files/${localStorage.getItem("user_id")}`, {
+            .get(HEROKU_URI + `/files/${localStorage.getItem("user_id")}`, this.headers
             // .get(`http://localhost:3001/files/${localStorage.getItem("user_id")}`, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("JWT")}`
-                }
-            }).then(resp => {
+            ).then(resp => {
                 console.log(resp)
                 this.setState({files : resp.data.files})
             }).catch(err => {
@@ -33,12 +35,9 @@ class View extends Component {
 
     handleDelete = id => {
         axios
-            .delete(HEROKU_URI + "/files/" + id, {
+            .delete(HEROKU_URI + "/files/" + id, this.headers
             // .delete("http://localhost:3001/files/" + id, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("JWT")}`
-                }
-            }).then(resp => {
+            ).then(resp => {
                 console.log(resp)
                 this.updateStateDelete(id)
             }).catch(err => {
@@ -46,10 +45,49 @@ class View extends Component {
             })
     }
 
-    handleEdit = data => {
-        console.log(data.target.formProductName.value)
-        
+    handleEdit = (e, file) => {
+        const {
+            formProductName,
+            formReferenceNumber,
+            formCountry,
+            formProductInfo
+        } = e.target
+
+        const updatedFile = {
+            productName : this.getDiff(file.productName, formProductName.value),
+            referenceNumber : this.getDiff(file.referenceNumber, formReferenceNumber.value),
+            country : this.getDiff(file.country, formCountry.value),
+            productInfo : this.getDiff(file.productInfo, formProductInfo.value)
+        }
+
+        let files = [...this.state.files]
+        const fileIndex = files.indexOf(file)
+        let tempFile = {...files[fileIndex]}
+        tempFile.productName = updatedFile.productName
+        tempFile.referenceNumber = updatedFile.referenceNumber
+        tempFile.country = updatedFile.country
+        tempFile.productInfo = updatedFile.productInfo
+        files[fileIndex] = tempFile
+
+        axios
+            .patch(HEROKU_URI + "/files/" + file._id,
+            // .patch("http://localhost:3001/files/" + file._id, 
+                {
+                    productName : updatedFile.productName,
+                    referenceNumber : updatedFile.referenceNumber,
+                    country : updatedFile.country,
+                    productInfo : updatedFile.productInfo
+                },
+                this.headers
+            ).then(resp => {
+                console.log(resp)
+                this.setState({ files })
+            }).catch(err => {
+                console.log(err)
+            })
     }
+
+    getDiff = (original, update) => { return update === "" ? original : update }
 
     updateStateDelete = id => {
         let files = [...this.state.files]
