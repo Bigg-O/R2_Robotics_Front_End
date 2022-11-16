@@ -25,6 +25,7 @@ const Login = () => {
             console.log("successful Login: ", response);
             localStorage.setItem("JWT", response.data.token);
             localStorage.setItem("email", response.data.user.email);
+            localStorage.setItem("email", response.data.user._id);
             alert("Sucessful Login")
             navigate("/")
           })
