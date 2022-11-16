@@ -7,14 +7,14 @@ class ViewCard extends Component {
     render() { 
         return ( 
             <tr>
-                <td>{this.props.file.id}</td>
-                <td>{this.props.file.id}</td>
-                <td>{this.props.file.id}</td>
-                <td>{this.props.file.id}</td>
-                <td>{this.props.file.id}</td>
-                <td>{this.props.file.id}</td>
-                <td>{this.props.file.id}</td>
-                <td>{this.props.file.id}</td>
+                <td>{this.props.file._id}</td>
+                <td>{this.props.file.dateCreated}</td>
+                <td>{this.props.file.productName}</td>
+                <td>{this.props.file.productInfo}</td>
+                <td>{this.props.file.referenceNumber}</td>
+                <td>{this.props.file.country}</td>
+                <td>TBD</td>
+                <td>TBD</td>
                 <td>
                     <Button variant="link" className="edit">Edit</Button>
                     <Button variant="link" className="delete">Delete</Button>

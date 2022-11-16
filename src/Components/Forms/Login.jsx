@@ -16,6 +16,7 @@ const Login = () => {
         e.preventDefault()
         axios
           .post(process.env.HEROKU_URI + "/users/login", {
+          // .post("http://localhost:3001" + "/users/login", {
             email: e.target.formEmail.value,
             password: e.target.formPassword.value
           })
@@ -23,7 +24,7 @@ const Login = () => {
             console.log("successful Login: ", response);
             localStorage.setItem("JWT", response.data.token);
             localStorage.setItem("email", response.data.user.email);
-            localStorage.setItem("email", response.data.user._id);
+            localStorage.setItem("user_id", response.data.user._id);
             alert("Sucessful Login")
             navigate("/")
           })
