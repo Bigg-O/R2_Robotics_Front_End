@@ -6,6 +6,8 @@ import axios from "axios"
 import Container from "react-bootstrap/Container"
 import Table from "react-bootstrap/Table"
 
+const HEROKU_URI = "https://r2-robotics-backend.herokuapp.com"
+
 class View extends Component {
     constructor(props) {
         super(props)
@@ -16,7 +18,8 @@ class View extends Component {
 
     componentDidMount() {
         axios
-            .get(process.env.HEROKU_URI + `/files/${localStorage.getItem("user_id")}`, {
+            .get(HEROKU_URI + `/files/${localStorage.getItem("user_id")}`, {
+            // .get(`http://localhost:3001/files/${localStorage.getItem("user_id")}`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("JWT")}`
                 }
@@ -28,8 +31,29 @@ class View extends Component {
             })
     }
 
+    handleDelete = id => {
+        axios
+            .delete(HEROKU_URI + "/files/" + id, {
+            // .delete("http://localhost:3001/files/" + id, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("JWT")}`
+                }
+            }).then(resp => {
+                console.log(resp)
+                this.updateStateDelete(id)
+            }).catch(err => {
+                console.log(err)
+            })
+    }
+
+    updateStateDelete = id => {
+        let files = [...this.state.files]
+        const fileIndex = files.map(file => file._id).indexOf(id)
+        files.splice(fileIndex, 1)
+        this.setState({files})
+    }
+
     render() { 
-        console.log(this.state.files)
         return (
             <Container fluid className="view-container">
                 <Table striped bordered hover>
@@ -51,6 +75,7 @@ class View extends Component {
                             <ViewCard
                                 key={file._id}
                                 file={file}
+                                onDelete={this.handleDelete}
                             />
                         ))}
                     </tbody>
