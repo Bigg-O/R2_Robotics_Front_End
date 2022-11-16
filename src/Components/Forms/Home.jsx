@@ -12,7 +12,7 @@ const Home = () => {
         e.preventDefault()
 
         axios
-            .post("http://localhost:3001/files/create", {
+            .post(process.env.HEROKU_URI + "/files/create", {
                 "user_id": localStorage.getItem("user_id"),
                 "productId": e.target.formProductId.value,
                 "productName": e.target.formProductName.value,
