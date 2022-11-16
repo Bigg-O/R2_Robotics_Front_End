@@ -8,10 +8,6 @@ import Col from "react-bootstrap/Col"
 import Button from "react-bootstrap/Button"
 
 class EditForm extends Component {
-    handleErrorMessage = () => {
-        // function just to avoid default warning message
-    }
-
     render() { 
         const { file } = this.props
         return ( 
@@ -20,11 +16,11 @@ class EditForm extends Component {
                     <Col>
                         <Form.Group controlId="formProductName" className="md-3" label="Product Name" >
                             <Form.Label>Product Name</Form.Label>
-                            <Form.Control type="id" value={file.productName} onChange={this.handleErrorMessage}/>
+                            <Form.Control type="id" placeholder={file.productName} onChange={this.handleErrorMessage}/>
                         </Form.Group>
                         <Form.Group controlId="formReferenceNumber" className="md-3" label="Reference Number" >
                             <Form.Label>Reference Number</Form.Label>
-                            <Form.Control type="id" value={file.referenceNumber} onChange={this.handleErrorMessage}/>
+                            <Form.Control type="id" placeholder={file.referenceNumber} onChange={this.handleErrorMessage}/>
                         </Form.Group>
                         <Form.Group controlId="formCountry" label="country">
                             <Form.Label>Country</Form.Label>
@@ -38,9 +34,8 @@ class EditForm extends Component {
                             <Form.Label>Product Info</Form.Label>
                             <Form.Control
                                 as="textarea"
-                                value={file.productInfo}
+                                placeholder={file.productInfo}
                                 style={{ height: '100px' }}
-                                onChange={this.handleErrorMessage}
                             />
                         </Form.Group>
                     </Col>

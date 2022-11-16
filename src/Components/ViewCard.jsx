@@ -19,7 +19,7 @@ class ViewCard extends Component {
     handleFileEdit = e => {
         e.preventDefault()
         this.handleEditModalClose()
-        this.props.onEdit(e)
+        this.props.onEdit(e, this.props.file)
     }
 
     handleDeleteModalShow = () => {this.setState({deleteModalShow: true})}
