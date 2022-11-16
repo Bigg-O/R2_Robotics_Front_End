@@ -17,7 +17,6 @@ const Home = () => {
             .post(HEROKU_URI + "/files/create", {
             // .post("http://localhost:3001/files/create", {
                 "user_id": localStorage.getItem("user_id"),
-                "productId": e.target.formProductId.value,
                 "productName": e.target.formProductName.value,
                 "productInfo": e.target.formProductInfo.value,
                 "referenceNumber": e.target.formReferenceNumber.value,
