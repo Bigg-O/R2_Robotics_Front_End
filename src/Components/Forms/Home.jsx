@@ -5,6 +5,8 @@ import HomeForm from "./HomeForm"
 import Container from "react-bootstrap/Container"
 import axios from "axios";
 
+const HEROKU_URI="https://r2-robotics-backend.herokuapp.com"
+
 const Home = () => {
     const navigate = useNavigate()
 
@@ -12,8 +14,8 @@ const Home = () => {
         e.preventDefault()
 
         axios
-            .post(process.env.HEROKU_URI + "/files/create", {
-            // .post("http://localhost:3001" + "/files/create", {
+            .post(HEROKU_URI + "/files/create", {
+            // .post("http://localhost:3001/files/create", {
                 "user_id": localStorage.getItem("user_id"),
                 "productId": e.target.formProductId.value,
                 "productName": e.target.formProductName.value,

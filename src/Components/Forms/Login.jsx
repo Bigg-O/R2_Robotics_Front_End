@@ -18,7 +18,7 @@ const Login = () => {
         e.preventDefault()
         axios
           .post(HEROKU_URI + "/users/login", {
-          // .post("http://localhost:3001" + "/users/login", {
+          // .post("http://localhost:3001/users/login", {
             email: e.target.formEmail.value,
             password: e.target.formPassword.value
           })
