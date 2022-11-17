@@ -7,11 +7,6 @@ import Container from "react-bootstrap/Container"
 import axios from "axios";
 
 const HEROKU_URI="https://r2-robotics-backend.herokuapp.com"
-const HEADERS = {
-    headers: {
-        Authorization: `Bearer ${localStorage.getItem("JWT")}`
-    }
-}
 
 const Home = () => {
     const [file, setFile] = useState(null)
