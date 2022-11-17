@@ -2,6 +2,7 @@ import { Component } from "react"
 import "./css/View.css"
 import ViewCard from "../Components/ViewCard"
 import axios from "axios"
+import download from 'downloadjs';
 
 import Container from "react-bootstrap/Container"
 import Table from "react-bootstrap/Table"
@@ -24,7 +25,7 @@ class View extends Component {
     componentDidMount() {
         axios
             .get(HEROKU_URI + `/files/${localStorage.getItem("user_id")}`, this.headers
-            // .get(`http://localhost:3001/files/${localStorage.getItem("user_id")}`, {
+            // .get(`http://localhost:3001/files/${localStorage.getItem("user_id")}`, this.headers
             ).then(resp => {
                 console.log(resp)
                 this.setState({files : resp.data.files})
@@ -54,29 +55,29 @@ class View extends Component {
         } = e.target
 
         const updatedFile = {
-            productName : this.getDiff(file.productName, formProductName.value),
-            referenceNumber : this.getDiff(file.referenceNumber, formReferenceNumber.value),
+            product_name : this.getDiff(file.productName, formProductName.value),
+            reference_number : this.getDiff(file.referenceNumber, formReferenceNumber.value),
             country : this.getDiff(file.country, formCountry.value),
-            productInfo : this.getDiff(file.productInfo, formProductInfo.value)
+            product_info : this.getDiff(file.productInfo, formProductInfo.value)
         }
 
         let files = [...this.state.files]
         const fileIndex = files.indexOf(file)
         let tempFile = {...files[fileIndex]}
-        tempFile.productName = updatedFile.productName
-        tempFile.referenceNumber = updatedFile.referenceNumber
+        tempFile.product_name = updatedFile.product_name
+        tempFile.reference_number = updatedFile.reference_number
         tempFile.country = updatedFile.country
-        tempFile.productInfo = updatedFile.productInfo
+        tempFile.product_info = updatedFile.product_info
         files[fileIndex] = tempFile
 
         axios
             .patch(HEROKU_URI + "/files/" + file._id,
             // .patch("http://localhost:3001/files/" + file._id, 
                 {
-                    productName : updatedFile.productName,
-                    referenceNumber : updatedFile.referenceNumber,
+                    product_name : updatedFile.product_name,
+                    reference_number : updatedFile.reference_number,
                     country : updatedFile.country,
-                    productInfo : updatedFile.productInfo
+                    product_info : updatedFile.product_info
                 },
                 this.headers
             ).then(resp => {
@@ -96,6 +97,22 @@ class View extends Component {
         this.setState({files})
     }
 
+    handleDownload = (e, id) => {
+        e.preventDefault()
+
+        axios
+            .get(HEROKU_URI + "/files/download/" + id, {
+            // .get("http://localhost:3001/files/download/" + id, {
+                responseType: 'blob'
+            },
+            ).then(resp => {
+                console.log(resp)
+                download(resp.data, null, resp.data.type)
+            }).catch(err => {
+                console.log(err)
+            })
+    }
+
     render() { 
         return (
             <Container fluid className="view-container">
@@ -108,8 +125,7 @@ class View extends Component {
                             <th>Product Info</th>
                             <th>Reference #</th>
                             <th>Country</th>
-                            <th>Image</th>
-                            <th>File Name</th>
+                            <th>File</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -120,6 +136,7 @@ class View extends Component {
                                 file={file}
                                 onEdit={this.handleEdit}
                                 onDelete={this.handleDelete}
+                                onDownload={this.handleDownload}
                             />
                         ))}
                     </tbody>

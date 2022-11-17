@@ -29,18 +29,27 @@ class ViewCard extends Component {
         this.props.onDelete(this.props.file._id)
     }
 
+    handleDownload = e => {this.props.onDownload(e, this.props.file._id)}
+
     render() { 
         return (
             <>
                 <tr>
                     <td>{this.props.file._id}</td>
-                    <td>{this.props.file.productName}</td>
-                    <td>{this.props.file.dateCreated}</td>
-                    <td>{this.props.file.productInfo}</td>
-                    <td>{this.props.file.referenceNumber}</td>
+                    <td>{this.props.file.product_name}</td>
+                    <td>{this.props.file.date_created}</td>
+                    <td>{this.props.file.product_info}</td>
+                    <td>{this.props.file.reference_number}</td>
                     <td>{this.props.file.country}</td>
-                    <td>TBD</td>
-                    <td>TBD</td>
+                    <td>
+                        <Button
+                            variant="link"
+                            onClick={this.handleDownload}
+                            className="download"
+                        >
+                            download
+                        </Button>
+                    </td>
                     <td>
                         <Button
                             variant="link"
