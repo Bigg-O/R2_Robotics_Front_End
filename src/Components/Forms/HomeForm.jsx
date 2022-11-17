@@ -37,10 +37,6 @@ class HomeForm extends Component {
                         </FloatingLabel>
                     </Col>
                     <Col>
-                        <Form.Group controlId="formImage" className="mb-3">
-                            <Form.Label>Image upload</Form.Label>
-                            <Form.Control type="file" size="lg" />
-                        </Form.Group>
                         <Form.Group controlId="formFile" className="mb-3">
                             <Form.Label>File upload</Form.Label>
                             <Form.Control type="file" size="lg" />
