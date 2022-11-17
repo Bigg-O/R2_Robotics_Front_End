@@ -1,70 +1,29 @@
-# Getting Started with Create React App
+# R2_Robotics Homework Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This front end utilizes libraries such as, JWT, axios, bootstrap ,downloadjs, history, react, react-bootstrap, react-router-dom, andreact-scripts.
+Main focus was creating a intuitional placements for the buttons and easy navigation through out the application utilizing navigation tools. Main style comes from react-bootstrap. Utilizing easy grid system the bootstrap provided made the app easy to view at any size devices including phone or computer.
 
-## Available Scripts
+## Getting Started
 
-In the project directory, you can run:
+You can directly access the app from https://r2-proj.netlify.app
 
-### `npm start`
+backend API from https://r2-robotics-backend.herokuapp.com/
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Backend repository is available here: https://github.com/Bigg-O/R2_Robotics_Back_End
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Deployment
 
-### `npm test`
+The app is deployed on [Netlify](https://www.netlify.com/)
+Backend is running on [Heroku](https://www.heroku.com/)
+Cloud is running on [MongoDB Atlas](https://www.mongodb.com/)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Built With
 
-### `npm run build`
+- [MongoDB Atlas](https://www.mongodb.com/) - The database cloud used
+- [Express.js](https://expressjs.com/) - The web framework used
+- [React.js](https://reactjs.org/) - The frontend web library used
+- [Node.js](https://nodejs.org/en/) - Backend used
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Authors
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **Wookeun Song** - _Initial work_ - [Bigg-O](https://github.com/Bigg-O)
