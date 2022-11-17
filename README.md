@@ -6,6 +6,7 @@ Main focus was creating a intuitional placements for the buttons and easy naviga
 ## Getting Started
 
 You can directly access the app from https://r2-proj.netlify.app
+- It can be very slow when you launch the app for first login due to the back-end server going to "sleep" after a long time of not using.
 
 backend API from https://r2-robotics-backend.herokuapp.com/
 
